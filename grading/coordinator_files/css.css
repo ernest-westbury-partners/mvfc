@@ -1,0 +1,74 @@
+.center {
+    padding-top:10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.custom-btn {
+    background-color: rgb(72, 0, 27);
+    color: #fff;
+}
+
+.shirt {
+    display: inline-block;
+    width: 40px;
+    height: 35px;
+    margin: 0px;
+    position: relative;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+.W-shirt {
+    background-color: white;
+}
+.M-shirt {
+    background-color: rgb(72, 0, 27);
+}
+.number {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.M-shirt .number {
+    color: white;
+}
+
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkSpacing {padding-right:7px;padding-left:7px;margin-right:10px;}
+
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color:  rgb(72, 0, 27); /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 2000; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    top: 60px; /* 60px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manly Vale Grading</title>
+    <link rel="icon" type="image/png" href="https://football2.mvp.international/images/favicon.png">
+    <link href="register_files/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="register_files/css.css" rel="stylesheet">
+    <script type="text/javascript" src="register_files/main.js"></script>
+    <script src="register_files/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div class="left">
+            <div class="logo-container">
+                <a href="/home.htm">
+                    <!-- <img width="150px" class="center" src="coordinator_files/MVFC-Logo-1.png" alt="Manly Vale FC"> -->
+                    <img width="150px" class="center mvfc-logo" src="img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                </a>
+
+                <h3>
+                    Celebrating <strong>75 years</strong> of football with our community
+                </h3>
+            </div>
+        </div>
+        <div class="right">
+            <form id="newPlayer" method="POST" action="">
+                <div class="form-card">
+                    <h1 class="form-title">New Player Registration</h1>
+
+                    <div class="form-group">
+                        <label for="valName">Player Name*</label>
+                        <input type="text" name="valName" id="valName" maxlength="255">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valParentName">Guardian Name*</label>
+                        <input type="text" name="valParentName" id="valParentName" maxlength="255">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telMobile">Mobile*</label>
+                        <input type="text" name="telMobile" id="telMobile" maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emlEmail">Email</label>
+                        <input type="text" name="emlEmail" id="emlEmail" maxlength="255">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="group_id">Select Group</label>
+                        <select name="group_id" id="group_id">
+                            <option value="0" selected="selected"></option>
+                            <option value="6">Female U9s</option>
+                            <option value="7">Mixed U9s</option>
+                            <option value="8">Female U10s</option>
+                            <option value="9">Mixed U10s</option>
+                            <option value="10">Female U11s</option>
+                            <option value="11">Mixed U11s</option>
+                            <option value="12">Female U12s</option>
+                            <option value="13">Mixed U12s</option>
+                            <option value="14">Female U13s</option>
+                            <option value="15">Mixed U13s</option>
+                            <option value="16">Female U14s</option>
+                            <option value="17">Mixed U14s</option>
+                            <option value="18">Female U15s</option>
+                            <option value="19">Mixed U15s</option>
+                            <option value="20">Mixed U16s</option>
+                            <option value="21">Female U18s</option>
+                            <option value="22">Mixed U18s</option>
+                            <option value="23">Mixed U21s</option>
+                            <option value="24">Female U99s</option>
+                            <option value="25">Mixed U99s</option>
+                            <option value="26">Mixed U100s</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <a onclick="saveNewPlayer()" class="btn custom-btn">Register New Player</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div>
+            Manly Vale Football Club is a registered non-profit organisation run by volunteers for our community.
+        </div>
+
+        <div>
+            Our club acknowledges that we play on the land of the Gayemagal and Garigal people. We wish to pay respect
+            to all Elders – past, present and future.
+        </div>
+        <div>
+            © Manly Vale Football Club 2026
+        </div>
+
+    </div>
+
+    <div id="snackbar"></div>
+    <script src="register_files/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            registerNewPlayer();
+        });
+    </script>
+
+    <link href="css/dist/style.min.css" rel="stylesheet">
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
+
+</html>

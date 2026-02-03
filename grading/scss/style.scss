@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+$maroon: rgb(72, 0, 27);
+$gold: rgb(255, 215, 0);
+$purple: rgb(42, 13, 53);
+
+@mixin montserrat {
+
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+@mixin shadow {
+    box-shadow: 4px -12px 36px rgba(0, 0, 0, 0.3);
+}
+
+.montserrat {
+    @include montserrat;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+body {
+    background: url('/img/Global-banner-background-full-scaled.jpg');
+    background-repeat: repeat-y;
+    background-position: center;
+    color: white;
+    @include montserrat;
+
+    input,
+    select {
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+    }
+
+    select {
+        padding: 12px 12px;
+    }
+
+    img.mvfc-logo {
+        max-width: 600px;
+        width: 60%;
+        margin: auto;
+    }
+
+    form {
+        width: 80%;
+        margin: auto;
+
+        .form-title {
+            text-align: center;
+            display: block;
+            margin-bottom: 36px;
+            text-transform: uppercase;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .form-card {
+            // background-color: $maroon;
+            background-color: $purple;
+            padding: 32px;
+            border-radius: 16px;
+            @include shadow;
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 14px;
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    #content {
+        height: 100vh;
+        display: flex;
+        max-width: 1600px;
+        margin: auto;
+
+        .left,
+        .right {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        $leftWidth: 50%;
+
+        .left {
+            width: $leftWidth;
+        }
+
+        .right {
+            width: calc(100% - $leftWidth);
+        }
+
+        .logo-container {
+            width: 100%;
+            margin: auto;
+            font-size: 32px;
+
+            h3 {
+                text-align: center;
+                display: block;
+                margin: 42px auto;
+                line-height: 40px;
+                font-size: inherit;
+                text-transform: uppercase;
+                width: 90%;
+                max-width: 600px;
+            }
+        }
+    }
+
+    #footer {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        padding: 12px;
+        font-size: 14px;
+
+        div {
+            margin-bottom: 4px;
+        }
+    }
+
+
+    .btn {
+        background-color: $gold;
+        color: $maroon;
+        font-weight: bold;
+        @include shadow;
+        display: block;
+        margin: auto;
+        margin-top: 16px;
+        padding: 12px 16px;
+        transition: transform 0.3s;
+
+        &:hover,
+        &:active {
+            background-color: $gold !important;
+            color: $maroon !important;
+            transition: 0.3s;
+            transform: scale(1.1);
+        }
+    }
+
+
+
+    &#home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        #content {
+            margin-top: 15vh;
+            flex-direction: column;
+            height: unset;
+
+            img.mvfc-logo {
+                max-width: 400px;
+                width: 80%;
+            }
+
+            .logo-container {
+                font-size: 24px;
+
+                h3 {
+                    line-height: 32px;
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+
+
+            .btn {
+                min-width: 200px;
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+        }
+
+    }
+}
+
+
+@media (max-width:575px) {
+    body {
+
+
+        #content {
+            display: block;
+            height: unset;
+
+            .left,
+            .right {
+                width: unset;
+            }
+
+            .logo-container {
+                display: block;
+                padding-top: 32px;
+                font-size: 24px;
+
+                h3 {
+                    line-height: 32px;
+                    margin-bottom: 20px;
+                }
+            }
+
+        }
+
+        form {
+            width: 90%;
+
+            .form-card {
+                padding: 24px;
+            }
+
+            .form-title {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+        }
+
+        #footer {
+            margin-top: 32px;
+            position: relative;
+            font-size: 12px;
+
+            div {
+                margin-bottom: 16px;
+            }
+        }
+
+
+        &#home {
+            display: block;
+            height: unset;
+
+            #content {
+                margin-top: 32px;
+                height: initial;
+            }
+
+            .actions {
+                width: 80%;
+                margin: auto;
+                display: block;
+            }
+        }
+
+    }
+}
