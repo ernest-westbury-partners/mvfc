@@ -22,7 +22,7 @@ jobs:
 
     - name: Upload JS and CSS with no-cache
       run: |
-        aws s3 sync ./ s3://westbury-partners-mvfc-grading \
+        aws s3 sync ./grading/ s3://westbury-partners-mvfc-grading \
           --exclude "*" \
           --include "*.js" \
           --include "*.css" \
