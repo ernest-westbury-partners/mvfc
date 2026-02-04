@@ -150,14 +150,15 @@ body {
     #snackbar {
         border-radius: 8px;
         background-color: $gold;
-        color: white;
+        font-weight: bold;
+        color: $maroon;
 
         @include shadow;
     }
 }
 
 
-@media (max-width:575px) {
+@media (max-width:768px) {
     body {
 
         form {

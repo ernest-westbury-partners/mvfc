@@ -57,14 +57,12 @@ function initMutationObserver() {
 
                 if (isHomePage()) {
                     _ifElementExists('form#newPlayer', () => {
-                        $('body').addClass('register')
                         $('body').attr('id', 'register')
                         prependRegistrationForm()
                     })
 
                     _ifElementDoesNotExist('form#newPlayer', () => {
                         $('body').attr('id', 'home')
-                        $('body').removeClass('register')
                     })
                 }
             }
@@ -163,7 +161,7 @@ function prependRegistrationForm() {
     _prependIfElementDoesNotExist('#content', `<div id="content">
     <div class="left">
         <div class="logo-container">
-            <a href="/home.htm">
+            <a href="/">
                 <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 
@@ -264,13 +262,7 @@ function modifyHomePage() {
 }
 
 function modifyRegisterPage() {
-    $('h3').each(function () {
-        const h3 = $(this)
-
-        $(this).remove();
-    })
-
-
+    prependRegistrationForm();
     appendFooter();
 }
 
