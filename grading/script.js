@@ -19,6 +19,14 @@ function isOverviewGradesPage() {
     return _urlIncludes('/overviewGrades')
 }
 
+function _ifElementContainsText(selector, text, callback) {
+    const _text = $(selector).text()
+    if (_text && _text.toLowerCase().includes(text.toLowerCase())) {
+        callback()
+    }
+}
+
+
 function _ifElementExists(selector, callback) {
     if ($(selector).length > 0) {
         callback()
@@ -64,6 +72,24 @@ function initMutationObserver() {
                     _ifElementDoesNotExist('form#newPlayer', () => {
                         $('body').attr('id', 'home')
                     })
+
+                    _ifElementContainsText('#content', 'Successfully registered', () => {
+                        $('#content').remove()
+                        prependMvfcLogo()
+                        _prependIfElementDoesNotExist('#content', `
+                        <div id="content">
+                            <div class="register-success">
+                                <div class="logo-container">
+                                    <a href="/">
+                                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                                    </a>
+                                </div>
+                                Successfully registered, please check in with a Coordinator.<br>Let them know player name and group.
+                            </div>
+                        </div>
+                        `)
+                    })
+
                 }
             }
 
