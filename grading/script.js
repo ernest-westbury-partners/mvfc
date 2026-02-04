@@ -58,10 +58,12 @@ function initMutationObserver() {
                 if (isHomePage()) {
                     _ifElementExists('form#newPlayer', () => {
                         $('body').addClass('register')
+                        $('body').attr('id', 'register')
                         prependRegistrationForm()
                     })
 
                     _ifElementDoesNotExist('form#newPlayer', () => {
+                        $('body').attr('id', 'home')
                         $('body').removeClass('register')
                     })
                 }
