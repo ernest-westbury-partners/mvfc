@@ -75,7 +75,6 @@ function initMutationObserver() {
 
                     _ifElementContainsText('#content', 'Successfully registered', () => {
                         $('#content').remove()
-                        prependMvfcLogo()
                         _prependIfElementDoesNotExist('#content', `
                         <div id="content">
                             <div class="register-success">
