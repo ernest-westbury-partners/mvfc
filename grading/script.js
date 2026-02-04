@@ -121,7 +121,7 @@ function _prependIfElementDoesNotExist(selector, htmlStr) {
     })
 
     _ifElementDoesNotExist(selector, () => {
-        $('body').append(htmlStr)
+        $('body').prepend(htmlStr)
     })
 }
 
