@@ -1,0 +1,124 @@
+$maroon: rgb(72, 0, 27);
+$gold: rgb(255, 215, 0);
+$purple: rgb(42, 13, 53);
+
+
+@mixin shadow {
+    box-shadow: 4px -12px 36px rgba(0, 0, 0, 0.3);
+}
+
+body#overview-grades {
+
+    #main-content {
+        max-width: 70%;
+        margin: auto;
+    }
+
+    .table-select {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 24px;
+
+        h3 {
+            margin: 8px;
+            padding: 8px 16px;
+            text-align: center;
+            display: block;
+            position: relative;
+            font-weight: normal;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            color: white;
+            font-size: 16px;
+
+            // @include shadow;
+
+
+            &::before {
+                transition-duration: 0.3s;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                content: '';
+                width: 100%;
+                height: 100%;
+                // background-color: $maroon;
+                border-radius: 4px;
+            }
+
+
+            &:hover,
+            &.active {
+                transform: scale(1.05);
+            }
+
+            &.active {
+                color: maroon;
+                font-weight: bold;
+
+                &::before {
+                    background-color: $gold;
+                }
+            }
+
+        }
+    }
+
+    .table-container {
+        // max-height: 70vh;
+        // overflow-y: scroll;
+    }
+
+    #title {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        max-width: 920px;
+        margin: auto;
+        background-color: rgba(42, 13, 53, 0.3);
+        padding: 16px 0;
+        border-radius: 16px;
+        border-spacing: 0 0;
+
+        tr:first-child {
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        tr {
+            td {
+
+                padding: 8px 0;
+                padding-left: 16px;
+            }
+
+            td:nth-child(1) {
+                width: 20%;
+            }
+
+            td:nth-child(2) {
+
+                width: 40%;
+            }
+
+
+            td:nth-child(3) {
+                width: 20%;
+            }
+
+
+            td:nth-child(4) {
+                width: 20%;
+            }
+
+            &:nth-child(2n) {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+}

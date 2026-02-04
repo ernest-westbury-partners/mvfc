@@ -1,0 +1,62 @@
+body#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    #content {
+        margin-top: 15vh;
+        flex-direction: column;
+        height: unset;
+
+        img.mvfc-logo {
+            max-width: 400px;
+            width: 80%;
+        }
+
+        .logo-container {
+            font-size: 24px;
+
+            h3 {
+                line-height: 32px;
+                margin-bottom: 0;
+            }
+        }
+
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+
+
+        .btn {
+            min-width: 200px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    }
+
+}
+
+
+@media (max-width:575px) {
+
+    body#home {
+        display: block;
+        height: unset;
+
+        #content {
+            margin-top: 32px;
+            height: initial;
+        }
+
+        .actions {
+            width: 80%;
+            margin: auto;
+            display: block;
+        }
+    }
+    
+}
