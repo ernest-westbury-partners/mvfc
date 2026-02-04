@@ -79,6 +79,7 @@ function appendFooter() {
 function modifyHomePage() {
 
     $('#content').remove()
+    $('#home>a').remove()
 
     $('body').prepend(`
         <div id="content">
