@@ -56,7 +56,9 @@ function initMutationObserver() {
                 console.log('#content updated!')
 
                 if (isHomePage()) {
-                    prependMvfcLogo()
+                    _ifElementExists('form#newPlayer', () => {
+
+                    })
                 }
             }
 
@@ -148,6 +150,84 @@ function prependMvfcLogo() {
             </h3>
         </div>
     `)
+}
+
+function prependRegistrationForm() {
+    $('#content').remove()
+    _prependIfElementDoesNotExist('#content', `<div id="content">
+    <div class="left">
+        <div class="logo-container">
+            <a href="/home.htm">
+                <!-- <img width="150px" class="center" src="coordinator_files/MVFC-Logo-1.png" alt="Manly Vale FC"> -->
+                <img width="150px" class="center mvfc-logo" src="img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+            </a>
+
+            <h3>
+                Celebrating <strong>75 years</strong> of football with our community
+            </h3>
+        </div>
+    </div>
+    <div class="right">
+        <form id="newPlayer" method="POST" action="">
+            <div class="form-card">
+                <h1 class="form-title">New Player Registration</h1>
+
+                <div class="form-group">
+                    <label for="valName">Player Name*</label>
+                    <input type="text" name="valName" id="valName" maxlength="255">
+                </div>
+
+                <div class="form-group">
+                    <label for="valParentName">Guardian Name*</label>
+                    <input type="text" name="valParentName" id="valParentName" maxlength="255">
+                </div>
+
+                <div class="form-group">
+                    <label for="telMobile">Mobile*</label>
+                    <input type="text" name="telMobile" id="telMobile" maxlength="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="emlEmail">Email</label>
+                    <input type="text" name="emlEmail" id="emlEmail" maxlength="255">
+                </div>
+
+                <div class="form-group">
+                    <label for="group_id">Select Group</label>
+                    <select name="group_id" id="group_id">
+                        <option value="0" selected="selected"></option>
+                        <option value="6">Female U9s</option>
+                        <option value="7">Mixed U9s</option>
+                        <option value="8">Female U10s</option>
+                        <option value="9">Mixed U10s</option>
+                        <option value="10">Female U11s</option>
+                        <option value="11">Mixed U11s</option>
+                        <option value="12">Female U12s</option>
+                        <option value="13">Mixed U12s</option>
+                        <option value="14">Female U13s</option>
+                        <option value="15">Mixed U13s</option>
+                        <option value="16">Female U14s</option>
+                        <option value="17">Mixed U14s</option>
+                        <option value="18">Female U15s</option>
+                        <option value="19">Mixed U15s</option>
+                        <option value="20">Mixed U16s</option>
+                        <option value="21">Female U18s</option>
+                        <option value="22">Mixed U18s</option>
+                        <option value="23">Mixed U21s</option>
+                        <option value="24">Female U99s</option>
+                        <option value="25">Mixed U99s</option>
+                        <option value="26">Mixed U100s</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <a onclick="saveNewPlayer()" class="btn custom-btn">Register New Player</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+`)
 }
 
 function modifyHomePage() {
