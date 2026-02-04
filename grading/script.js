@@ -1,3 +1,24 @@
+function _elementExists(selector) {
+    return $(selector).length > 0;
+}
+
+function _urlIncludes(str) {
+    const url = window.location.pathname;
+    return url.includes(str)
+}
+
+function isHomePage() {
+    return _urlIncludes('/home')
+}
+
+function isRegisterPage() {
+    return _urlIncludes('/register')
+}
+
+function isOverviewGradesPage() {
+    return _urlIncludes('/overviewGrades')
+}
+
 function _ifElementExists(selector, callback) {
     if ($(selector).length > 0) {
         callback()
@@ -22,7 +43,6 @@ function _ifElementHasNoChild(parentElement, childSelector, callback) {
     }
 }
 
-
 function initMutationObserver() {
 
     const observer = new MutationObserver((mutations) => {
@@ -34,6 +54,10 @@ function initMutationObserver() {
 
             if (id == 'content') {
                 console.log('#content updated!')
+
+                if (isHomePage()) {
+                    prependMvfcLogo()
+                }
             }
 
         }
@@ -53,20 +77,18 @@ $(document).ready(function () {
 })
 
 function initBodyClasses() {
-    const url = window.location.pathname;
-    console.log(url)
 
     function addBodyId(idStr) {
         $('body').attr('id', idStr)
     }
 
-    if (url.includes('/home')) {
+    if (isHomePage()) {
         addBodyId('home');
         modifyHomePage();
-    } else if (url.includes('/register')) {
+    } else if (isRegisterPage()) {
         addBodyId('register');
         modifyRegisterPage();
-    } else if (url.includes('/overviewGrades')) {
+    } else if (isOverviewGradesPage()) {
         addBodyId('overview-grades');
         modifyOverviewGradesPage();
     } else {
@@ -74,14 +96,28 @@ function initBodyClasses() {
     }
 }
 
-function appendFooter() {
-    _ifElementExists('#footer', () => {
-        console.log('#footer element already exists.')
+function _appendIfElementDoesNotExist(selector, htmlStr) {
+    _ifElementExists(selector, () => {
+        console.log(`${selector} element already exists.`)
     })
 
-    _ifElementDoesNotExist('#footer', () => {
+    _ifElementDoesNotExist(selector, () => {
+        $('body').append(htmlStr)
+    })
+}
 
-        $('body').append(`
+function _prependIfElementDoesNotExist(selector, htmlStr) {
+    _ifElementExists(selector, () => {
+        console.log(`${selector} element already exists.`)
+    })
+
+    _ifElementDoesNotExist(selector, () => {
+        $('body').append(htmlStr)
+    })
+}
+
+function appendFooter() {
+    _appendIfElementDoesNotExist('#footer', `
         <div id="footer">
             <div>
                 Manly Vale Football Club is a registered non-profit organisation run by volunteers for our community.
@@ -96,10 +132,22 @@ function appendFooter() {
                 © Manly Vale Football Club 2026
             </div>
         </div>
+   `)
+}
+
+function prependMvfcLogo() {
+    _prependIfElementDoesNotExist('.mvfc-logo', `
+        <div class="logo-container">
+            <a href="/home.htm">
+                <!-- <img width="150px" class="center" src="coordinator_files/MVFC-Logo-1.png" alt="Manly Vale FC"> -->
+                <img width="150px" class="center mvfc-logo" src="img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+            </a>
+
+            <h3>
+                Celebrating <strong>75 years</strong> of football with our community
+            </h3>
+        </div>
     `)
-
-    })
-
 }
 
 function modifyHomePage() {
