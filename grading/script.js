@@ -141,7 +141,6 @@ function prependMvfcLogo() {
     _prependIfElementDoesNotExist('.mvfc-logo', `
         <div class="logo-container">
             <a href="/home.htm">
-                <!-- <img width="150px" class="center" src="coordinator_files/MVFC-Logo-1.png" alt="Manly Vale FC"> -->
                 <img width="150px" class="center mvfc-logo" src="img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 
@@ -158,7 +157,6 @@ function prependRegistrationForm() {
     <div class="left">
         <div class="logo-container">
             <a href="/home.htm">
-                <!-- <img width="150px" class="center" src="coordinator_files/MVFC-Logo-1.png" alt="Manly Vale FC"> -->
                 <img width="150px" class="center mvfc-logo" src="img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 

@@ -147,6 +147,10 @@ body {
     }
 
 
+    #snackbar{
+        border-radius: 8px;
+        @include shadow;
+    }
 }
 
 
