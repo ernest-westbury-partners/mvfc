@@ -22,9 +22,34 @@ function _ifElementHasNoChild(parentElement, childSelector, callback) {
     }
 }
 
+
+function initMutationObserver() {
+
+    const observer = new MutationObserver((mutations) => {
+
+        for (let index = 0; index < mutations.length; index++) {
+            const mutation = mutations[index];
+            const target = mutation.target;
+            const id = target.id;
+
+            if (id == 'content') {
+                console.log('#content updated!')
+            }
+
+        }
+
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+    });
+
+}
+
 $(document).ready(function () {
     initBodyClasses();
-    initTableSelect();
+    initMutationObserver();
 })
 
 function initBodyClasses() {
@@ -43,6 +68,7 @@ function initBodyClasses() {
         modifyRegisterPage();
     } else if (url.includes('/overviewGrades')) {
         addBodyId('overview-grades');
+        modifyOverviewGradesPage();
     } else {
 
     }
@@ -113,6 +139,10 @@ function modifyRegisterPage() {
 
 
     appendFooter();
+}
+
+function modifyOverviewGradesPage() {
+    initTableSelect();
 }
 
 function initTableSelect() {
