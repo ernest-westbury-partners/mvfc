@@ -57,7 +57,7 @@ function initMutationObserver() {
 
                 if (isHomePage()) {
                     _ifElementExists('form#newPlayer', () => {
-
+                        prependRegistrationForm()
                     })
                 }
             }
