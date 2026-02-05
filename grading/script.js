@@ -298,7 +298,7 @@ function modifyHomePage() {
 }
 
 function modifyRegisterPage() {
-    // prependRegistrationForm();
+    prependRegistrationForm();
     appendFooter();
 }
 
