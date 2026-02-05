@@ -301,7 +301,7 @@ function prependAgeGroupForm() {
     _prependIfElementDoesNotExist('#content', `<div id="content" class="select-age-group">
     <div class="left">
         <div class="logo-container">
-            <a href="/">
+            <a href="/coordinator">
                 <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 
