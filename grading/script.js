@@ -313,6 +313,7 @@ function prependAgeGroupForm() {
     <div class="right">
         <form id="registerGrader" method="POST" action="">
             <div class="form-card">
+                <h1 class="form-title">Welcome Coordinator</h1>
 
                 <div class="form-group">
                     <label for="valAgeGroup">Select Age Group</label>
