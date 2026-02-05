@@ -45,6 +45,13 @@ html {
                     &:nth-child(2n) {
                         background-color: rgba(0, 0, 0, 0.3);
                     }
+
+                    &.playerLine {
+
+                        td:nth-child(3) {
+                            width: 50%;
+                        }
+                    }
                 }
 
                 .number {
@@ -54,6 +61,7 @@ html {
                 .btn {
                     margin-top: unset;
                     padding: 6px 8px;
+                    display: inline-block;
                 }
             }
         }
