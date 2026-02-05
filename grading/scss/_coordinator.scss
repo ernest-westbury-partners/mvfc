@@ -1,6 +1,12 @@
 body#coordinator {
     height: 100vh;
 
+    &>a:first-child {
+        img {
+            max-width: 200px;
+        }
+    }
+
     #content {
         margin-top: 15vh;
 
@@ -20,6 +26,32 @@ body#coordinator {
 
     }
 
+    #content.select-age-group {
+        height: 100vh;
+        flex-direction: row !important;
+        margin-top: unset;
+
+        .left,
+        .right {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        $leftWidth: 50%;
+
+        .left {
+            width: $leftWidth;
+        }
+
+        .right {
+            width: calc(100% - $leftWidth);
+        }
+
+    }
+
 }
 
 
@@ -33,7 +65,30 @@ body#coordinator {
             margin-top: 32px;
             height: initial;
         }
-        
+
+        #content.select-age-group {
+
+            height: unset;
+
+            .left,
+            .right {
+                width: unset;
+            }
+
+            .logo-container {
+                img.mvfc-logo {
+                    max-width: 200px !important;
+                }
+
+                h3 {
+                    display: none !important;
+                }
+
+                margin-bottom: 20px !important;
+            }
+
+        }
+
     }
 
 }

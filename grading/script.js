@@ -11,6 +11,10 @@ function isHomePage() {
     return _urlIncludes('/home')
 }
 
+function isGraderPage() {
+    return _urlIncludes('/grader')
+}
+
 function isRegisterPage() {
     return _urlIncludes('/register')
 }
@@ -107,6 +111,11 @@ function initMutationObserver() {
                     })
 
                 } else if (isCoordinatorPage() && !tableElementExists()) {
+
+                    // Handle age group form
+                    _ifElementExists('form#registerGrader', () => {
+                        prependAgeGroupForm()
+                    })
 
                     $('#content').removeClass('table-container')
 
@@ -286,19 +295,10 @@ function prependRegistrationForm() {
 `)
 }
 
-function prependPlayerLookupForm() {
+function prependAgeGroupForm() {
+
     $('#content').remove()
-
-    var yearRange = 100
-    var yearOptions = ``
-
-    for (let i = 0; i < yearRange; i++) {
-        const year = (new Date().getFullYear()) - i;
-        yearOptions += `<option value="${year}">${year}</option>`
-
-    }
-
-    _prependIfElementDoesNotExist('#content', `<div id="content" class="player-lookup">
+    _prependIfElementDoesNotExist('#content', `<div id="content" class="select-age-group">
     <div class="left">
         <div class="logo-container">
             <a href="/">
@@ -311,28 +311,30 @@ function prependPlayerLookupForm() {
         </div>
     </div>
     <div class="right">
-        <form id="playerLookup" method="POST" action="">
+        <form id="registerGrader" method="POST" action="">
             <div class="form-card">
-                <h1 class="form-title">Check In</h1>
 
                 <div class="form-group">
-                    <label>Surname</label>
-                    <input type="text" name="valName" id="valLastName" value="" maxlength="255">
-                </div>
-
-                <div class="form-group">
-                    <label for="intYr">Select Birth Year</label>
-                    <select name="intYr" id="intYr">
+                    <label for="valAgeGroup">Select Age Group</label>
+                    <select name="valAgeGroup" id="valAgeGroup">
                         <option value="0"></option>
-                        ${yearOptions}
-                        <option value="0">0</option>
-                        <option value="-1">-1</option>
+                        <option value="9">U9s</option>
+                        <option value="10">U10s</option>
+                        <option value="11">U11s</option>
+                        <option value="12">U12s</option>
+                        <option value="13">U13s</option>
+                        <option value="14-16">U14-16s</option>
+                        <option value="18">U18s</option>
+                        <option value="21">U21s</option>
+                        <option value="99">U99s</option>
+                        <option value="100">U100s</option>
                     </select>
-                </div>            
+                </div>
 
                 <div class="form-group">
-                    <a onclick="getPlayers()" class="btn custom-btn">Look Up</a>
+                    <a onclick="saveNewGradingGroup()" class="btn custom-btn">Start</a>
                 </div>
+
             </div>
         </form>
     </div>
@@ -340,19 +342,73 @@ function prependPlayerLookupForm() {
 `)
 }
 
+function prependPlayerLookupForm() {
+    $('#content').remove()
+
+    var yearRange = 100
+    var yearOptions = ``
+
+    for (let i = 0; i < yearRange; i++) {
+        const year = (new Date().getFullYear()) - i;
+        yearOptions += `<option value="${year}">${year}</option>`
+    }
+
+    _prependIfElementDoesNotExist('#content', `
+        <div id="content" class="player-lookup">
+            <div class="left">
+                <div class="logo-container">
+                    <a href="/">
+                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                    </a>
+
+                    <h3>
+                        Celebrating <strong>75 years</strong> of football with our community
+                    </h3>
+                </div>
+            </div>
+            <div class="right">
+                <form id="playerLookup" method="POST" action="">
+                    <div class="form-card">
+                        <h1 class="form-title">Check In</h1>
+
+                        <div class="form-group">
+                            <label>Surname</label>
+                            <input type="text" name="valName" id="valLastName" value="" maxlength="255">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="intYr">Select Birth Year</label>
+                            <select name="intYr" id="intYr">
+                                <option value="0"></option>
+                                ${yearOptions}
+                                <option value="0">0</option>
+                                <option value="-1">-1</option>
+                            </select>
+                        </div>            
+
+                        <div class="form-group">
+                            <a onclick="getPlayers()" class="btn custom-btn">Look Up</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+`)
+}
+
 function prependRegisterSuccess() {
     $('#content').remove()
     _prependIfElementDoesNotExist('#content', `
-    <div id="content">
-        <div class="register-success">
-            <div class="logo-container">
-                <a href="/">
-                    <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
-                </a>
+        <div id="content">
+            <div class="register-success">
+                <div class="logo-container">
+                    <a href="/">
+                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                    </a>
+                </div>
+                Successfully registered, please check in with a Coordinator.<br>Let them know player name and group.
             </div>
-            Successfully registered, please check in with a Coordinator.<br>Let them know player name and group.
         </div>
-    </div>
     `)
 }
 
@@ -390,7 +446,7 @@ function modifyRegisterPage() {
 }
 
 function modifyOverviewGradesPage() {
-    initTableSelect();
+
 }
 
 function modifyCoordinatorPage() {
@@ -425,20 +481,3 @@ function modifyCoordinatorPage() {
     appendFooter();
 }
 
-function initTableSelect() {
-    $('table').hide()
-    $('.table-select').each(function () {
-        $(this).find('h3').click(function () {
-            var target = $(this).data('target')
-            var title = $(this).text()
-            $('h3').removeClass('active')
-            $(this).addClass('active')
-            $('table').hide()
-            $(`#${target}`).show()
-
-            $('#title').text(title)
-        })
-    })
-
-    $('h3:first-child').click()
-}
