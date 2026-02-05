@@ -300,6 +300,7 @@ function prependPlayerLookupForm() {
     <div class="right">
         <form id="playerLookup" method="POST" action="">
             <div class="form-card">
+                <h1 class="form-title">Check In</h1>
 
                 <div class="form-group">
                     <label>Surname</label>
