@@ -1,5 +1,6 @@
 body#coordinator {
-    height: 100vh;
+    display: block;
+    height: unset;
 
     &>a:first-child {
         img {
@@ -8,7 +9,8 @@ body#coordinator {
     }
 
     #content {
-        margin-top: 15vh;
+        margin-top: 32px;
+        height: initial;
 
         img.mvfc-logo {
             max-width: 400px;
@@ -58,13 +60,6 @@ body#coordinator {
 @media (max-width:1024px) {
 
     body#coordinator {
-        display: block;
-        height: unset;
-
-        #content {
-            margin-top: 32px;
-            height: initial;
-        }
 
         #content.select-age-group {
 
