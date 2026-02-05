@@ -1,0 +1,39 @@
+body#coordinator {
+    height: 100vh;
+
+    #content {
+        margin-top: 15vh;
+
+        img.mvfc-logo {
+            max-width: 400px;
+            width: 80%;
+        }
+
+        .logo-container {
+            font-size: 24px;
+
+            h3 {
+                line-height: 32px;
+                margin-bottom: 0;
+            }
+        }
+
+    }
+
+}
+
+
+@media (max-width:768px) {
+
+    body#coordinator {
+        display: block;
+        height: unset;
+
+        #content {
+            margin-top: 32px;
+            height: initial;
+        }
+        
+    }
+
+}
