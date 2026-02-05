@@ -285,7 +285,7 @@ function prependPlayerLookupForm() {
 
     }
 
-    _prependIfElementDoesNotExist('#content', `<div id="content">
+    _prependIfElementDoesNotExist('#content', `<div id="content" class="player-lookup">
     <div class="left">
         <div class="logo-container">
             <a href="/">

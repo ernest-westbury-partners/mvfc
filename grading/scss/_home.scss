@@ -33,7 +33,30 @@ body#home {
             margin-top: 32px;
             height: initial;
         }
-        
+
+        #content.player-lookup {
+
+            height: unset;
+
+            .left,
+            .right {
+                width: unset;
+            }
+
+            .logo-container {
+                img.mvfc-logo {
+                    max-width: 200px !important;
+                }
+
+                h3 {
+                    display: none !important;
+                }
+
+                margin-bottom: 20px !important;
+            }
+
+
+        }
     }
 
 }
