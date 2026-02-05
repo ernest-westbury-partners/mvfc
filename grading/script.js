@@ -111,7 +111,7 @@ function initMutationObserver() {
                     $('#content').removeClass('table-container')
 
                 } else if (isCoordinatorPage() && tableElementExists()) {
-                    
+
                     $('#content').addClass('table-container')
 
                 }
@@ -418,6 +418,8 @@ function modifyCoordinatorPage() {
             </div>
         `)
 
+    } else {
+        $('#content').addClass('table-container')
     }
 
     appendFooter();
