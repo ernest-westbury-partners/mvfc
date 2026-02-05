@@ -23,13 +23,16 @@ function isCoordinatorPage() {
     return _urlIncludes('/coordinator')
 }
 
+function tableElementExists() {
+    return _elementExists('table') || _elementExists('td') || _elementExists('tr');
+}
+
 function _ifElementContainsText(selector, text, callback) {
     const _text = $(selector).text()
     if (_text && _text.toLowerCase().includes(text.toLowerCase())) {
         callback()
     }
 }
-
 
 function _ifElementExists(selector, callback) {
     if ($(selector).length > 0) {
@@ -67,7 +70,7 @@ function initMutationObserver() {
             if (id == 'content') {
                 console.log('#content updated!')
 
-                if (isHomePage() || isRegisterPage()) {
+                if ((isHomePage() && !tableElementExists()) || isRegisterPage()) {
                     _ifElementExists('form#newPlayer', () => {
                         $('body').attr('id', 'register')
                         prependRegistrationForm()
@@ -80,6 +83,8 @@ function initMutationObserver() {
                     _ifElementContainsText('#content', 'Successfully registered', () => {
                         prependRegisterSuccess();
                     })
+
+                } else if (isCoordinatorPage() && !tableElementExists()) {
 
                 }
             }
@@ -308,26 +313,30 @@ function modifyOverviewGradesPage() {
 
 function modifyCoordinatorPage() {
 
-    $('#content').remove()
-    $('body>a').remove()
+    if (!tableElementExists()) {
 
-    $('body').prepend(`
-    <div id="content">
-        <div class="logo-container">
-            <a href="/coordinator">
-                <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
-            </a>
+        $('#content').remove()
+        $('body>a').remove()
 
-            <h3>
-                Welcome Coordinator
-            </h3>
-        </div>
+        $('body').prepend(`
+            <div id="content">
+                <div class="logo-container">
+                    <a href="/coordinator">
+                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                    </a>
 
-        <div class="actions">
-            <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
-        </div>
-    </div>
-`)
+                    <h3>
+                        Welcome Coordinator
+                    </h3>
+                </div>
+
+                <div class="actions">
+                    <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
+                </div>
+            </div>
+        `)
+
+    }
 
     appendFooter();
 }
