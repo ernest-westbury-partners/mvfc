@@ -67,7 +67,7 @@ function initMutationObserver() {
             if (id == 'content') {
                 console.log('#content updated!')
 
-                if (isHomePage()) {
+                if (isHomePage() || isRegisterPage()) {
                     _ifElementExists('form#newPlayer', () => {
                         $('body').attr('id', 'register')
                         prependRegistrationForm()
