@@ -1,3 +1,49 @@
-.table-container {
-    display: block;
+html {
+
+    body {
+
+        div#content.table-container {
+
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+            justify-content: center;
+
+            h1,
+            h3 {
+                display: block;
+                text-align: center;
+                margin: 32px auto;
+            }
+
+            table {
+                width: 100%;
+                max-width: 920px;
+                margin: auto;
+                background-color: rgba(42, 13, 53, 0.3);
+                padding: 16px 0;
+                border-radius: 16px;
+                border-spacing: 0 0;
+
+
+                tr:first-child {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                }
+
+                tr {
+                    td {
+                        padding: 8px 0;
+                        padding-left: 16px;
+                    }
+
+                    &:nth-child(2n) {
+                        background-color: rgba(0, 0, 0, 0.3);
+                    }
+                }
+            }
+        }
+
+    }
+
 }

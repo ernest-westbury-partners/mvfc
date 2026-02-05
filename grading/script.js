@@ -102,12 +102,17 @@ function initMutationObserver() {
 
                 } else if (isHomePage() && tableElementExists()) {
 
-                    // Handle player table
                     _ifElementExists('table#playerTable', () => {
                         $('#content').addClass('table-container')
                     })
 
                 } else if (isCoordinatorPage() && !tableElementExists()) {
+
+                    $('#content').removeClass('table-container')
+
+                } else if (isCoordinatorPage() && tableElementExists()) {
+                    
+                    $('#content').addClass('table-container')
 
                 }
             }
