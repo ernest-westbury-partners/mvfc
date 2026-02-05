@@ -77,7 +77,6 @@ function initMutationObserver() {
 
                 if ((isHomePage() && !tableElementExists()) || isRegisterPage()) {
 
-
                     // Handle new player registration form
                     _ifElementExists('form#newPlayer', () => {
                         $('body').attr('id', 'register')
@@ -97,6 +96,15 @@ function initMutationObserver() {
                     // Handle new player registration success message
                     _ifElementContainsText('#content', 'Successfully registered', () => {
                         prependRegisterSuccess();
+                    })
+
+                    $('#content').removeClass('table-container')
+
+                } else if (isHomePage() && tableElementExists()) {
+
+                    // Handle player table
+                    _ifElementExists('table#playerTable', () => {
+                        $('#content').addClass('table-container')
                     })
 
                 } else if (isCoordinatorPage() && !tableElementExists()) {
@@ -326,7 +334,6 @@ function prependPlayerLookupForm() {
 </div>
 `)
 }
-
 
 function prependRegisterSuccess() {
     $('#content').remove()
