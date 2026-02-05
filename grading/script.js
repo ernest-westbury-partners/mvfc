@@ -314,7 +314,7 @@ function modifyCoordinatorPage() {
     $('body').prepend(`
     <div id="content">
         <div class="logo-container">
-            <a href="/">
+            <a href="/coordinator">
                 <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 

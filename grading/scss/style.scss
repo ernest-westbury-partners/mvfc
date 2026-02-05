@@ -30,6 +30,11 @@ $purple: rgb(42, 13, 53);
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     background: url('/img/Global-banner-background-full-scaled.jpg');
     background-repeat: repeat-y;
     background-position: center;
@@ -85,8 +90,8 @@ body {
     }
 
     #content {
-        height: 100vh;
         display: flex;
+        flex-direction: column;
         max-width: 1600px;
         margin: auto;
 

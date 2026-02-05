@@ -1,14 +1,8 @@
 body#home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 
     #content {
         margin-top: 15vh;
-        flex-direction: column;
-        height: unset;
 
         img.mvfc-logo {
             max-width: 400px;
