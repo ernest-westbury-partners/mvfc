@@ -19,6 +19,10 @@ function isOverviewGradesPage() {
     return _urlIncludes('/overviewGrades')
 }
 
+function isCoordinatorPage() {
+    return _urlIncludes('/coordinator')
+}
+
 function _ifElementContainsText(selector, text, callback) {
     const _text = $(selector).text()
     if (_text && _text.toLowerCase().includes(text.toLowerCase())) {
@@ -74,19 +78,7 @@ function initMutationObserver() {
                     })
 
                     _ifElementContainsText('#content', 'Successfully registered', () => {
-                        $('#content').remove()
-                        _prependIfElementDoesNotExist('#content', `
-                        <div id="content">
-                            <div class="register-success">
-                                <div class="logo-container">
-                                    <a href="/">
-                                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
-                                    </a>
-                                </div>
-                                Successfully registered, please check in with a Coordinator.<br>Let them know player name and group.
-                            </div>
-                        </div>
-                        `)
+                        prependRegisterSuccess();
                     })
 
                 }
@@ -123,6 +115,9 @@ function initBodyClasses() {
     } else if (isOverviewGradesPage()) {
         addBodyId('overview-grades');
         modifyOverviewGradesPage();
+    } else if (isCoordinatorPage()) {
+        addBodyId('coordinator');
+        modifyCoordinatorPage();
     } else {
 
     }
@@ -258,10 +253,26 @@ function prependRegistrationForm() {
 `)
 }
 
+function prependRegisterSuccess() {
+    $('#content').remove()
+    _prependIfElementDoesNotExist('#content', `
+    <div id="content">
+        <div class="register-success">
+            <div class="logo-container">
+                <a href="/">
+                    <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                </a>
+            </div>
+            Successfully registered, please check in with a Coordinator.<br>Let them know player name and group.
+        </div>
+    </div>
+    `)
+}
+
 function modifyHomePage() {
 
     $('#content').remove()
-    $('#home>a').remove()
+    $('body>a').remove()
 
     $('body').prepend(`
         <div id="content">
@@ -293,6 +304,32 @@ function modifyRegisterPage() {
 
 function modifyOverviewGradesPage() {
     initTableSelect();
+}
+
+function modifyCoordinatorPage() {
+
+    $('#content').remove()
+    $('body>a').remove()
+
+    $('body').prepend(`
+    <div id="content">
+        <div class="logo-container">
+            <a href="/">
+                <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+            </a>
+
+            <h3>
+                Welcome Coordinator
+            </h3>
+        </div>
+
+        <div class="actions">
+            <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
+        </div>
+    </div>
+`)
+
+    appendFooter();
 }
 
 function initTableSelect() {

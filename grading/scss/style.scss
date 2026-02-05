@@ -1,3 +1,4 @@
+@use './coordinator';
 @use './home';
 @use './register';
 @use './register_success';
@@ -109,6 +110,18 @@ body {
                 text-transform: uppercase;
                 width: 90%;
                 max-width: 600px;
+            }
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+
+
+            .btn {
+                min-width: 200px;
+                margin-left: 8px;
+                margin-right: 8px;
             }
         }
     }
