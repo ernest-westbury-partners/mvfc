@@ -25,17 +25,20 @@ html {
                 padding: 16px 0;
                 border-radius: 16px;
                 border-spacing: 0 0;
+                overflow: hidden;
 
 
                 tr:first-child {
                     font-weight: bold;
-                    font-size: 1.25rem;
+                    // font-size: 1.25rem;
                 }
 
                 tr {
+
+                    th,
                     td {
-                        padding: 8px 0;
-                        padding-left: 16px;
+                        padding: 8px 4px;
+                        text-align: center;
                     }
 
                     &:nth-child(2n) {
