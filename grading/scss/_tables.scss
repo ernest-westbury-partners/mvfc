@@ -1,6 +1,7 @@
 html {
 
-    body {
+    body#home,
+    body#coordinator {
 
         div#content.table-container {
 
@@ -17,7 +18,7 @@ html {
             }
 
             table {
-                width: 100%;
+                width: 98%;
                 max-width: 920px;
                 margin: auto;
                 background-color: rgba(42, 13, 53, 0.3);
