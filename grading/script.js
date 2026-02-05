@@ -27,6 +27,11 @@ function tableElementExists() {
     return _elementExists('table') || _elementExists('td') || _elementExists('tr');
 }
 
+function _elementContainsText(selector, text) {
+    const _text = $(selector).text()
+    return _text && _text.toLowerCase().includes(text.toLowerCase())
+}
+
 function _ifElementContainsText(selector, text, callback) {
     const _text = $(selector).text()
     if (_text && _text.toLowerCase().includes(text.toLowerCase())) {
@@ -71,6 +76,9 @@ function initMutationObserver() {
                 console.log('#content updated!')
 
                 if ((isHomePage() && !tableElementExists()) || isRegisterPage()) {
+
+
+                    // Handle new player registration form
                     _ifElementExists('form#newPlayer', () => {
                         $('body').attr('id', 'register')
                         prependRegistrationForm()
@@ -80,6 +88,13 @@ function initMutationObserver() {
                         $('body').attr('id', 'home')
                     })
 
+
+                    // Handle player lookup form
+                    _ifElementExists('form#playerLookup', () => {
+                        prependPlayerLookupForm()
+                    })
+
+                    // Handle new player registration success message
                     _ifElementContainsText('#content', 'Successfully registered', () => {
                         prependRegisterSuccess();
                     })
@@ -257,6 +272,60 @@ function prependRegistrationForm() {
 </div>
 `)
 }
+
+function prependPlayerLookupForm() {
+    $('#content').remove()
+
+    var yearRange = 100
+    var yearOptions = ``
+
+    for (let i = 0; i < yearRange; i++) {
+        const year = (new Date().getFullYear()) - i;
+        yearOptions += `<option value="${year}">${year}</option>`
+
+    }
+
+    _prependIfElementDoesNotExist('#content', `<div id="content">
+    <div class="left">
+        <div class="logo-container">
+            <a href="/">
+                <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+            </a>
+
+            <h3>
+                Celebrating <strong>75 years</strong> of football with our community
+            </h3>
+        </div>
+    </div>
+    <div class="right">
+        <form id="playerLookup" method="POST" action="">
+            <div class="form-card">
+
+                <div class="form-group">
+                    <label>Surname</label>
+                    <input type="text" name="valName" id="valLastName" value="" maxlength="255">
+                </div>
+
+                <div class="form-group">
+                    <label for="intYr">Select Birth Year</label>
+                    <select name="intYr" id="intYr">
+                        <option value="0"></option>
+                        ${yearOptions}
+                        <option value="0">0</option>
+                        <option value="-1">-1</option>
+                    </select>
+                </div>            
+
+                <div class="form-group">
+                    <a onclick="getPlayers()" class="btn custom-btn">Look Up</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+`)
+}
+
 
 function prependRegisterSuccess() {
     $('#content').remove()
