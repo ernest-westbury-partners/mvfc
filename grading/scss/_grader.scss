@@ -5,6 +5,7 @@ body#grader {
     &>a:first-child {
         img {
             max-width: 200px;
+            margin-top: 32px;
         }
     }
 
@@ -12,6 +13,7 @@ body#grader {
         margin-top: 32px;
         height: initial;
         text-align: center;
+        padding: 0px 16px;
 
         img.mvfc-logo {
             max-width: 400px;
@@ -31,7 +33,25 @@ body#grader {
         select {
             width: 100%;
             display: block;
+        }
+
+
+        label {
             margin-bottom: 8px;
+        }
+
+        table {
+            .btn {
+                background-color: white;
+            }
+
+            td:last-child {
+                display: flex;
+            }
+
+            label{
+                margin-right: 12px;
+            }
         }
 
     }
