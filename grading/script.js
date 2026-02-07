@@ -596,7 +596,7 @@ function prependGraderRegistrationForm() {
                     </div>
 
                     <div class="form-group">
-                        <a onclick="saveNewGradingGroup()" class="btn custom-btn">Start Grading</a>
+                        <a onclick="registerGrader()" class="btn custom-btn">Start Grading</a>
                     </div>
 
                 </div>
