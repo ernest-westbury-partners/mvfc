@@ -1,3 +1,7 @@
+$maroon: rgb(72, 0, 27);
+$gold: rgb(255, 215, 0);
+$purple: rgb(42, 13, 53);
+
 body#grader {
     display: block;
     height: unset;
@@ -41,16 +45,30 @@ body#grader {
         }
 
         table {
-            .btn {
-                background-color: white;
-            }
+            // .btn {
+            //     background-color: white;
+            // }
 
             td:last-child {
                 display: flex;
             }
 
-            label{
+            label {
                 margin-right: 12px;
+            }
+        }
+
+        &>h2 {
+            font-size: 16px;
+            background-color: white;
+            color: $maroon;
+            padding: 12px 24px;
+            border-radius: 8px;
+            line-height: 2.5rem;
+
+            &::before {
+                content: '1 = BEST\n 2 = ABOVE AVERAGE\n 3 = MIDDLE\n 4 = BEFORE AVERAGE\n 5 = NEEDS IMPROVEMENTS';
+                display: block;
             }
         }
 
