@@ -133,20 +133,20 @@ function initMutationObserver() {
 
                 } else if (isGraderPage()) {
 
-                    if (tableElementExists()) {
+                    // if (tableElementExists()) {
 
-                        $('#content').addClass('table-container')
+                    //     $('#content').addClass('table-container')
 
-                    } else {
+                    // } else {
 
-                        $('#content').removeClass('table-container')
+                    //     $('#content').removeClass('table-container')
 
-                        // Handle  grader registration form
-                        _ifElementExists('form#registerGrader', () => {
-                            prependGraderRegistrationForm()
-                        })
+                    //     // Handle  grader registration form
+                    //     _ifElementExists('form#registerGrader', () => {
+                    //         prependGraderRegistrationForm()
+                    //     })
 
-                    }
+                    // }
 
                 }
             }
@@ -511,6 +511,8 @@ function modifyCoordinatorPage() {
 
 function modifyGraderPage() {
 
+    return
+
     if (!tableElementExists()) {
 
         $('#content').remove()
@@ -566,7 +568,7 @@ function prependGraderRegistrationForm() {
             <form id="registerGrader" method="POST" action="">
                 <div class="form-card">
 
-                    <h1 class="form-title">Welcome Coordinator</h1>
+                    <h1 class="form-title">Grader Registration</h1>
                     
                     <div class="form-group">
                         <label>Name</label>
