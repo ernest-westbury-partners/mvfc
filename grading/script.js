@@ -79,49 +79,74 @@ function initMutationObserver() {
             if (id == 'content') {
                 console.log('#content updated!')
 
-                if ((isHomePage() && !tableElementExists()) || isRegisterPage()) {
+                if (isHomePage() || isRegisterPage()) {
 
-                    // Handle new player registration form
-                    _ifElementExists('form#newPlayer', () => {
-                        $('body').attr('id', 'register')
-                        prependRegistrationForm()
-                    })
+                    if (tableElementExists()) {
 
-                    _ifElementDoesNotExist('form#newPlayer', () => {
-                        $('body').attr('id', 'home')
-                    })
+                        _ifElementExists('table#playerTable', () => {
+                            $('#content').addClass('table-container')
+                        })
+
+                    } else {
+
+                        $('#content').removeClass('table-container')
+
+                        // Handle new player registration form
+                        _ifElementExists('form#newPlayer', () => {
+                            $('body').attr('id', 'register')
+                            prependRegistrationForm()
+                        })
+
+                        _ifElementDoesNotExist('form#newPlayer', () => {
+                            $('body').attr('id', 'home')
+                        })
 
 
-                    // Handle player lookup form
-                    _ifElementExists('form#playerLookup', () => {
-                        prependPlayerLookupForm()
-                    })
+                        // Handle player lookup form
+                        _ifElementExists('form#playerLookup', () => {
+                            prependPlayerLookupForm()
+                        })
 
-                    // Handle new player registration success message
-                    _ifElementContainsText('#content', 'Successfully registered', () => {
-                        prependRegisterSuccess();
-                    })
+                        // Handle new player registration success message
+                        _ifElementContainsText('#content', 'Successfully registered', () => {
+                            prependRegisterSuccess();
+                        })
 
-                    $('#content').removeClass('table-container')
+                    }
 
-                } else if (isHomePage() && tableElementExists()) {
+                } else if (isCoordinatorPage()) {
 
-                    _ifElementExists('table#playerTable', () => {
+                    if (tableElementExists()) {
+
                         $('#content').addClass('table-container')
-                    })
 
-                } else if (isCoordinatorPage() && !tableElementExists()) {
+                    } else {
 
-                    // Handle age group form
-                    _ifElementExists('form#registerGrader', () => {
-                        prependAgeGroupForm()
-                    })
+                        // Handle age group form
+                        _ifElementExists('form#registerGrader', () => {
+                            prependAgeGroupForm()
+                        })
 
-                    $('#content').removeClass('table-container')
+                        $('#content').removeClass('table-container')
 
-                } else if (isCoordinatorPage() && tableElementExists()) {
+                    }
 
-                    $('#content').addClass('table-container')
+                } else if (isGraderPage()) {
+
+                    if (tableElementExists()) {
+
+                        $('#content').addClass('table-container')
+
+                    } else {
+
+                        $('#content').removeClass('table-container')
+
+                        // Handle  grader registration form
+                        _ifElementExists('form#registerGrader', () => {
+                            prependGraderRegistrationForm()
+                        })
+
+                    }
 
                 }
             }
@@ -160,8 +185,9 @@ function initBodyClasses() {
     } else if (isCoordinatorPage()) {
         addBodyId('coordinator');
         modifyCoordinatorPage();
-    } else {
-
+    } else if (isGraderPage()) {
+        addBodyId('grader');
+        modifyGraderPage()
     }
 }
 
@@ -447,7 +473,7 @@ function modifyRegisterPage() {
 }
 
 function modifyOverviewGradesPage() {
-
+    // TODO
 }
 
 function modifyCoordinatorPage() {
@@ -459,11 +485,11 @@ function modifyCoordinatorPage() {
 
         $('body').prepend(`
             <div id="content">
+
                 <div class="logo-container">
                     <a href="/coordinator">
                         <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
                     </a>
-
                     <h3>
                         Welcome Coordinator
                     </h3>
@@ -472,6 +498,7 @@ function modifyCoordinatorPage() {
                 <div class="actions">
                     <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
                 </div>
+
             </div>
         `)
 
@@ -482,3 +509,100 @@ function modifyCoordinatorPage() {
     appendFooter();
 }
 
+function modifyGraderPage() {
+
+    if (!tableElementExists()) {
+
+        $('#content').remove()
+        $('body>a').remove()
+
+        $('body').prepend(`
+            <div id="content">
+
+                <div class="logo-container">
+                    <a href="/grader">
+                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                    </a>
+                    <h3>
+                        Welcome Graders
+                    </h3>
+                </div>
+
+                <div class="actions">
+                    <a onclick="registerGrader()" class="btn custom-btn">Register</a>
+                </div>
+
+            </div>
+        `)
+
+    } else {
+        $('#content').addClass('table-container')
+    }
+
+    appendFooter();
+}
+
+function prependGraderRegistrationForm() {
+
+    $('#content').remove()
+    _prependIfElementDoesNotExist('#content', `
+    <div id="content" class="grader-registration">
+
+        <div class="left">
+            <div class="logo-container">
+
+                <a href="/grader">
+                    <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                </a>
+
+                <h3>
+                    Celebrating <strong>75 years</strong> of football with our community
+                </h3>
+
+            </div>
+        </div>
+
+        <div class="right">
+            <form id="registerGrader" method="POST" action="">
+                <div class="form-card">
+
+                    <h1 class="form-title">Welcome Coordinator</h1>
+                    
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="valName" id="valName" value="" maxlength="255">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="text" name="valMobile" id="valMobile" value="" maxlength="255">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="valAgeGroup">Select Age Group</label>
+                        <select name="valAgeGroup" id="valAgeGroup">
+                            <option value="0"></option>
+                            <option value="9">U9s</option>
+                            <option value="10">U10s</option>
+                            <option value="11">U11s</option>
+                            <option value="12">U12s</option>
+                            <option value="13">U13s</option>
+                            <option value="14-16">U14-16s</option>
+                            <option value="18">U18s</option>
+                            <option value="21">U21s</option>
+                            <option value="99">U99s</option>
+                            <option value="100">U100s</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <a onclick="saveNewGradingGroup()" class="btn custom-btn">Start Grading</a>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+`)
+}
