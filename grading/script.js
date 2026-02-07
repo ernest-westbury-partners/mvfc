@@ -178,9 +178,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } else {
 
-        initBodyClasses();
-        initMutationObserver();
-        
+        $(document).ready(function () {
+            initBodyClasses();
+            initMutationObserver();
+        })
+
     }
 
 });
@@ -199,15 +201,11 @@ function initBodyClasses() {
         modifyRegisterPage();
     } else if (isOverviewGradesPage()) {
         addBodyId('overview-grades');
-        modifyOverviewGradesPage();
     } else if (isCoordinatorPage()) {
         addBodyId('coordinator');
         modifyCoordinatorPage();
     } else if (isGraderPage()) {
         addBodyId('grader');
-        modifyGraderPage()
-    } else if (isCoordinatorExportPage()) {
-        addBodyId('coordinator-export');
     } else if (isAdminPage()) {
         addBodyId('admin');
     }
@@ -494,9 +492,6 @@ function modifyRegisterPage() {
     appendFooter();
 }
 
-function modifyOverviewGradesPage() {
-    // TODO
-}
 
 function modifyCoordinatorPage() {
 
@@ -531,40 +526,6 @@ function modifyCoordinatorPage() {
     appendFooter();
 }
 
-function modifyGraderPage() {
-
-    return
-
-    if (!tableElementExists()) {
-
-        $('#content').remove()
-        $('body>a').remove()
-
-        $('body').prepend(`
-            <div id="content">
-
-                <div class="logo-container">
-                    <a href="/grader">
-                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
-                    </a>
-                    <h3>
-                        Welcome Graders
-                    </h3>
-                </div>
-
-                <div class="actions">
-                    <a onclick="registerGrader()" class="btn custom-btn">Register</a>
-                </div>
-
-            </div>
-        `)
-
-    } else {
-        $('#content').addClass('table-container')
-    }
-
-    appendFooter();
-}
 
 function prependGraderRegistrationForm() {
 
