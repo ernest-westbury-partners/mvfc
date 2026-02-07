@@ -170,10 +170,20 @@ function initMutationObserver() {
 
 }
 
-$(document).ready(function () {
-    initBodyClasses();
-    initMutationObserver();
-})
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (isCoordinatorExportPage()) {
+
+        document.querySelector('body').id = "coordinator-export"
+
+    } else {
+
+        initBodyClasses();
+        initMutationObserver();
+        
+    }
+
+});
 
 function initBodyClasses() {
 
