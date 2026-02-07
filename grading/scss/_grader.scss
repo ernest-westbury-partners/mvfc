@@ -51,6 +51,11 @@ body#grader {
             //     background-color: white;
             // }
 
+            .btn-check:checked+.btn {
+                background-color: #198754 !important;
+                border-color: #198754 !important;
+            }
+
             td:last-child {
                 display: flex;
             }
@@ -84,6 +89,10 @@ body#grader {
             .btn {
                 width: 100%;
             }
+        }
+
+        .number {
+            font-size: 1.5rem;
         }
 
     }
