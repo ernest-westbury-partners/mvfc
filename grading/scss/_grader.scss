@@ -11,6 +11,7 @@ body#grader {
     #content {
         margin-top: 32px;
         height: initial;
+        text-align: center;
 
         img.mvfc-logo {
             max-width: 400px;
@@ -24,6 +25,13 @@ body#grader {
                 line-height: 32px;
                 margin-bottom: 0;
             }
+        }
+
+        input,
+        select {
+            width: 100%;
+            display: block;
+            margin-bottom: 8px;
         }
 
     }
