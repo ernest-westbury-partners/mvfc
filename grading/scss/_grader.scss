@@ -54,23 +54,27 @@ body#grader {
             }
 
             label {
-                margin-right: 12px;
+                margin-right: 6px;
             }
         }
 
-        &>h2 {
+        &>h2:nth-of-type(1) {
             font-size: 16px;
             background-color: white;
             color: $maroon;
             padding: 12px 24px;
             border-radius: 8px;
             line-height: 2.5rem;
-
-            &::before {
-                content: '1 = BEST\n 2 = ABOVE AVERAGE\n 3 = MIDDLE\n 4 = BEFORE AVERAGE\n 5 = NEEDS IMPROVEMENTS';
-                display: block;
-            }
         }
+
+        &>h3 {
+            padding: 24px 0;
+        }
+
+        &>h1 {
+            padding-top: 36px;
+        }
+
 
     }
 
