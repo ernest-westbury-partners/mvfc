@@ -31,7 +31,7 @@ $purple: rgb(42, 13, 53);
     font-weight: bold;
 }
 
-body {
+body:not(#coordinator-export) {
     display: flex;
     flex-direction: column;
     justify-content: center;

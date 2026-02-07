@@ -23,6 +23,14 @@ function isOverviewGradesPage() {
     return _urlIncludes('/overviewGrades')
 }
 
+function isCoordinatorExportPage() {
+    return _urlIncludes('/coordinatorExport')
+}
+
+function isAdminPage() {
+    return _urlIncludes('/manlyAdmins')
+}
+
 function isCoordinatorPage() {
     return _urlIncludes('/coordinator')
 }
@@ -188,6 +196,10 @@ function initBodyClasses() {
     } else if (isGraderPage()) {
         addBodyId('grader');
         modifyGraderPage()
+    } else if (isCoordinatorExportPage()) {
+        addBodyId('coordinator-export');
+    } else if (isAdminPage()) {
+        addBodyId('admin');
     }
 }
 
