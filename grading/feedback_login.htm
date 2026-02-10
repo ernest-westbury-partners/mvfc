@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Manly Vale Grading</title>
+    <link rel="icon" type="image/png" href="https://feedback.mvp.international/images/favicon.png">
+    <link href="feedback_login_files/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="feedback_login_files/css.css" rel="stylesheet">
+    <script type="text/javascript" src="feedback_login_files/main.js"></script>
+    <script src="feedback_login_files/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a href="https://feedback.mvp.international/">
+        Manly Vale FC</a>
+    <div id="content">
+        <h2>Login</h2>
+        <form method="POST" id="feedbackForm"><input type="text" name="emlEmail"><br><input type="submit" value="login">
+        </form>
+    </div>
+    <div id="snackbar"></div>
+    <script src="feedback_login_files/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                const $radios = $('input[type="radio"]');
+
+                $radios.each(function () {
+                    if (this.checked) {
+                        $(this).data('wasChecked', true);
+                    }
+                });
+
+                $radios.on('click', function () {
+                    console.log("click registered");
+                    const $this = $(this);
+                    console.log($this);
+                    if ($this.data('wasChecked')) {
+                        // Unset
+                        $this.prop('checked', false);
+                        $this.data('wasChecked', false);
+                    } else {
+                        // Set
+                        $radios.data('wasChecked', false);
+                        $this.data('wasChecked', true);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+    <link href="css/dist/style.min.css" rel="stylesheet">
+    <script type="text/javascript" src="script.js"></script>
+
+
+
+</body>
+
+</html>

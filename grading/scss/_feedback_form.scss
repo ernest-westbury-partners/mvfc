@@ -1,0 +1,235 @@
+$maroon: rgb(72, 0, 27);
+$gold: rgb(255, 215, 0);
+$purple: rgb(42, 13, 53);
+
+
+@mixin shadow {
+    box-shadow: 4px -12px 36px rgba(0, 0, 0, 0.3);
+}
+
+body#feedback-form {
+    display: block;
+    height: unset;
+    margin-bottom: 48px;
+
+    .logo-container {
+        img {
+            max-width: 150px;
+            margin-top: 32px;
+        }
+
+        h3 {
+            display: none;
+        }
+    }
+
+    #content {
+        margin-top: 32px;
+        height: initial;
+        text-align: center;
+        padding: 0px 16px;
+
+        form {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        &>h2,
+        &>h4 {
+            margin-bottom: 32px;
+        }
+
+        img.mvfc-logo {
+            max-width: 400px;
+            width: 80%;
+        }
+
+
+        table,
+        tbody,
+        tr,
+        td,
+        th {
+            display: block;
+            width: 100%;
+        }
+
+        tr:first-child,
+        th {
+            display: none;
+        }
+
+        tr {
+            margin-bottom: 64px;
+            position: relative;
+            display: grid;
+
+            grid-template:
+                "playerName playerName"
+                "skill communication"
+                "decision attitude"
+                "comments comments"
+                "division division"
+
+            ;
+
+
+            grid-template-rows: auto auto;
+            grid-template-columns: 50% 50%;
+
+            background-color: $purple;
+            padding: 20px 8px 28px 8px;
+            border-radius: 12px;
+
+            @include shadow;
+
+            td {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                textarea {
+                    min-height: 120px;
+                    width: calc(100% - 28px);
+                }
+            }
+
+            td:nth-child(1) {
+                font-size: 32px;
+                font-weight: bold;
+            }
+
+            td::before {
+                display: block;
+                width: 100%;
+                font-size: initial;
+                margin: 12px auto 6px auto;
+
+            }
+
+            td:nth-child(1) {
+                grid-area: playerName;
+
+                &::before {
+                    // content: 'Player';
+                    font-weight: normal;
+                }
+            }
+
+            td:nth-child(2) {
+                grid-area: skill;
+
+                &::before {
+                    content: 'Skill'
+                }
+            }
+
+            td:nth-child(3) {
+                grid-area: 'communication';
+
+                &::before {
+                    content: 'Communication'
+                }
+            }
+
+            td:nth-child(4) {
+                grid-area: decision;
+
+                &::before {
+                    content: 'Decision'
+                }
+            }
+
+            td:nth-child(5) {
+                grid-area: attitude;
+
+                &::before {
+                    content: 'Attitude'
+                }
+            }
+
+            td:nth-child(6) {
+                grid-area: comments;
+
+                &::before {
+                    content: 'Other Comments (any GK interest)'
+                }
+            }
+
+            td:nth-child(7) {
+                grid-area: division;
+
+                &::before {
+                    content: 'Suggested Division'
+                }
+            }
+
+        }
+
+        table {
+
+            .btn-check:checked+.btn {
+                background-color: #198754 !important;
+                border-color: #198754 !important;
+                color: white !important;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                margin: 4px;
+            }
+
+            td:last-child {
+                display: flex;
+            }
+
+        }
+
+        &>h3:nth-of-type(2) {
+            font-size: 16px;
+            background-color: white;
+            color: $maroon;
+            padding: 16px 24px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &>h3 {
+            padding: 24px 0;
+        }
+
+        &>h1 {
+            padding-top: 36px;
+        }
+
+        .d-grid.gap-2.col-6.mx-auto {
+            width: 100%;
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .number {
+            font-size: 1.5rem;
+        }
+
+    }
+
+
+
+    #footer {
+        margin-top: 32px;
+        position: relative;
+        font-size: 12px;
+
+        div {
+            margin-bottom: 16px;
+        }
+    }
+
+
+}

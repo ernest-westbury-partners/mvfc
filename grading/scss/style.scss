@@ -1,5 +1,8 @@
 @use './admins';
 @use './coordinator';
+@use './feedback_form';
+@use './feedback_list';
+@use './feedback_login';
 @use './grader';
 @use './home';
 @use './register';

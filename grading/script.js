@@ -35,6 +35,18 @@ function isCoordinatorPage() {
     return _urlIncludes('/coordinator')
 }
 
+function isFeedbackLoginPage() {
+    return _urlIncludes('feedback.mvp.international/login') || _urlIncludes('feedback_login')
+}
+
+function isFeedbackListPage() {
+    return _urlIncludes('feedback.mvp.international/feedback/list') || _urlIncludes('feedback_list')
+}
+
+function isFeedbackFormPage() {
+    return _urlIncludes('feedback.mvp.international/feedback/feedback?team_id') || _urlIncludes('feedback_form')
+}
+
 function tableElementExists() {
     return _elementExists('table') || _elementExists('td') || _elementExists('tr');
 }
@@ -173,9 +185,9 @@ function initMutationObserver() {
 document.addEventListener("DOMContentLoaded", function () {
 
     if (isCoordinatorExportPage()) {
-
-        document.querySelector('body').id = "coordinator-export"
-
+        document.body.id = "coordinator-export"
+    } else if (isFeedbackListPage()) {
+        document.body.id = "feedback-list"
     } else {
 
         $(document).ready(function () {
@@ -189,8 +201,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initBodyClasses() {
 
+    // function addBodyId(idStr) {
+    //     $('body').attr('id', idStr)
+    // }
+
     function addBodyId(idStr) {
-        $('body').attr('id', idStr)
+        document.body.id = idStr;
     }
 
     if (isHomePage()) {
@@ -208,6 +224,12 @@ function initBodyClasses() {
         addBodyId('grader');
     } else if (isAdminPage()) {
         addBodyId('admin');
+    } else if (isFeedbackLoginPage()) {
+        addBodyId('feedback-login');
+        modifyFeedbackLoginPage();
+    } else if (isFeedbackFormPage()) {
+        addBodyId('feedback-form');
+        modifyFeedbackFormPage();
     }
 }
 
@@ -590,4 +612,54 @@ function prependGraderRegistrationForm() {
 
     </div>
 `)
+}
+
+function modifyFeedbackLoginPage() {
+
+    $('body>a:nth-of-type(1)').remove()
+
+    function prependFeedbackLoginForm() {
+        $('#content').remove()
+        _prependIfElementDoesNotExist('#content', `<div id="content">
+        <div class="left">
+            <div class="logo-container">
+                <a href="/">
+                    <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                </a>
+    
+                <h3>
+                    Celebrating <strong>75 years</strong> of football with our community
+                </h3>
+            </div>
+        </div>
+        <div class="right">
+            <form id="feedbackForm" method="POST" action="">
+                <div class="form-card">
+                    <h1 class="form-title">Login</h1>
+    
+                    <div class="form-group">
+                        <input type="text" name="emlEmail">
+                    </div>
+    
+                    <div class="form-group">
+                        <input class="btn" type="submit" value="login" style="text-transform:capitalize; width:100%;">
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    `)
+    }
+
+    prependFeedbackLoginForm()
+    appendFooter()
+}
+
+function modifyFeedbackFormPage() {
+
+    $('body>a:nth-of-type(1)').remove()
+    $('body #content>a').addClass('btn')
+
+    prependMvfcLogo()
 }
