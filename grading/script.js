@@ -36,15 +36,15 @@ function isCoordinatorPage() {
 }
 
 function isFeedbackLoginPage() {
-    return _urlIncludes('feedback.mvp.international/login') || _urlIncludes('feedback_login')
+    return window.location.toString().includes('feedback.mvp.international/login') || _urlIncludes('feedback_login')
 }
 
 function isFeedbackListPage() {
-    return _urlIncludes('feedback.mvp.international/feedback/list') || _urlIncludes('feedback_list')
+    return window.location.toString().includes('feedback.mvp.international/feedback/list') || _urlIncludes('feedback_list')
 }
 
 function isFeedbackFormPage() {
-    return _urlIncludes('feedback.mvp.international/feedback/feedback?team_id') || _urlIncludes('feedback_form')
+    return window.location.toString().includes('feedback.mvp.international/feedback/feedback?team_id') || _urlIncludes('feedback_form')
 }
 
 function tableElementExists() {
