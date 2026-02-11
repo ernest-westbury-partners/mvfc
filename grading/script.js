@@ -186,16 +186,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isCoordinatorExportPage()) {
         document.body.id = "coordinator-export"
-    } else if (isFeedbackListPage()) {
-        document.body.id = "feedback-list"
-        modifyFeedbackListPage()
     } else {
-
         $(document).ready(function () {
             initBodyClasses();
             initMutationObserver();
         })
-
     }
 
 });
@@ -231,6 +226,9 @@ function initBodyClasses() {
     } else if (isFeedbackFormPage()) {
         addBodyId('feedback-form');
         modifyFeedbackFormPage();
+    } else if (isFeedbackListPage()) {
+        addBodyId('feedback-list');
+        modifyFeedbackListPage()
     }
 }
 
