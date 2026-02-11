@@ -126,7 +126,7 @@ body#feedback-form {
             }
 
             td:nth-child(3) {
-                grid-area: 'communication';
+                grid-area: communication;
 
                 &::before {
                     content: 'Communication'
