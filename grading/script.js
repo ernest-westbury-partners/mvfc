@@ -173,7 +173,7 @@ function initMutationObserver() {
 
             if (isFeedbackFormPage()) {
                 console.log('Feedback form updated!')
-                // $('grammarly-extension').remove()
+                $('grammarly-extension').remove()
             }
 
         }
