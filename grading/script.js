@@ -188,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.id = "coordinator-export"
     } else if (isFeedbackListPage()) {
         document.body.id = "feedback-list"
+        modifyFeedbackListPage()
     } else {
 
         $(document).ready(function () {
@@ -666,6 +667,6 @@ function modifyFeedbackListPage() {
 
     $('body>a:nth-of-type(1)').remove()
     $('body #content>a:first-child').addClass('btn')
-    
+
     prependMvfcLogo()
 }

@@ -15,7 +15,7 @@ $purple: rgb(42, 13, 53);
 }
 
 body#feedback-list {
-    padding: 10vh 0;
+    padding: 24px 0;
     // font-size: 3rem;
 
 
@@ -23,6 +23,7 @@ body#feedback-list {
         img {
             max-width: 150px;
             margin-top: 32px;
+            width: 1000px;
         }
 
         h3 {
@@ -37,8 +38,8 @@ body#feedback-list {
 
             display: block;
             text-decoration: none;
-            margin: 16px auto;
-            padding: 32px;
+            margin: 24px auto;
+            padding: 16px;
             text-align: center;
 
             background-color: $maroon;
