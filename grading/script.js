@@ -514,7 +514,6 @@ function modifyRegisterPage() {
     appendFooter();
 }
 
-
 function modifyCoordinatorPage() {
 
     if (!tableElementExists()) {
@@ -547,7 +546,6 @@ function modifyCoordinatorPage() {
 
     appendFooter();
 }
-
 
 function prependGraderRegistrationForm() {
 
@@ -661,5 +659,13 @@ function modifyFeedbackFormPage() {
     $('body>a:nth-of-type(1)').remove()
     $('body #content>a').addClass('btn')
 
+    prependMvfcLogo()
+}
+
+function modifyFeedbackListPage() {
+
+    $('body>a:nth-of-type(1)').remove()
+    $('body #content>a:first-child').addClass('btn')
+    
     prependMvfcLogo()
 }

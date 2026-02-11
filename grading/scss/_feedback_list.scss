@@ -16,21 +16,47 @@ $purple: rgb(42, 13, 53);
 
 body#feedback-list {
     padding: 10vh 0;
-    font-size: 3rem;
+    // font-size: 3rem;
 
-    &>a {
-        display: block;
-        text-decoration: none;
-        margin: 24px auto;
-        padding: 32px;
+
+    .logo-container {
+        img {
+            max-width: 150px;
+            margin-top: 32px;
+        }
+
+        h3 {
+            display: none;
+        }
+    }
+
+    #content {
         text-align: center;
 
-        background-color: $maroon;
-        color: white;
-        font-weight: bold;
-        @include shadow;
-        display: block;
+        a {
 
-        border-radius: 16px;
+            display: block;
+            text-decoration: none;
+            margin: 16px auto;
+            padding: 32px;
+            text-align: center;
+
+            background-color: $maroon;
+            color: white;
+            font-weight: bold;
+            @include shadow;
+            display: block;
+
+            border-radius: 16px;
+
+            &.btn {
+                color: $maroon;
+                background-color: $gold;
+            }
+        }
+
+        br {
+            display: none;
+        }
     }
 }
