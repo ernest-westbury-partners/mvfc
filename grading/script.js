@@ -36,7 +36,7 @@ function isCoordinatorPage() {
 }
 
 function isFeedbackLoginPage() {
-    return window.location.toString().includes('feedback.mvp.international/login') || _urlIncludes('feedback_login')
+    return window.location.toString().includes('feedback.mvp.international/login') || _urlIncludes('feedback_login') ||window.location.toString().includes('feedback.mvp.international/feedback/loginList') 
 }
 
 function isFeedbackListPage() {
@@ -173,7 +173,7 @@ function initMutationObserver() {
 
             if (isFeedbackFormPage()) {
                 console.log('Feedback form updated!')
-                $('grammarly-extension').remove()
+                // $('grammarly-extension').remove()
             }
 
         }
