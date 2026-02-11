@@ -669,7 +669,11 @@ function modifyFeedbackFormPage() {
 function modifyFeedbackListPage() {
 
     $('body>a:nth-of-type(1)').remove()
-    $('body #content>a:first-child').addClass('btn')
+    $('body #content>a:first-child').each(function () {
+        if ($(this).text.toLowerCase() == 'logout') {
+            $(this).addClass('btn')
+        }
+    })
 
     prependMvfcLogo()
 }
