@@ -36,11 +36,11 @@ function isCoordinatorPage() {
 }
 
 function isFeedbackLoginPage() {
-    return window.location.toString().includes('feedback.mvp.international/login') || _urlIncludes('feedback_login') ||window.location.toString().includes('feedback.mvp.international/feedback/loginList') 
+    return window.location.toString().includes('feedback.mvp.international/login') || _urlIncludes('feedback_login')
 }
 
 function isFeedbackListPage() {
-    return window.location.toString().includes('feedback.mvp.international/feedback/list') || _urlIncludes('feedback_list')
+    return window.location.toString().includes('feedback.mvp.international/feedback/list') || _urlIncludes('feedback_list') || window.location.toString().includes('feedback.mvp.international/feedback/loginList')
 }
 
 function isFeedbackFormPage() {
