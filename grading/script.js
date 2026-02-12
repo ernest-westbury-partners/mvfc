@@ -620,6 +620,12 @@ function modifyFeedbackLoginPage() {
 
     $('body>a:nth-of-type(1)').remove()
 
+    var error = ''
+
+    _ifElementContainsText('#content h3', 'Error: No teams found connected to this email', () => {
+        error = `<h3 class="form-error">Error: No teams found connected to this email</h3>`
+    })
+
     function prependFeedbackLoginForm() {
         $('#content').remove()
         _prependIfElementDoesNotExist('#content', `<div id="content">
@@ -638,6 +644,8 @@ function modifyFeedbackLoginPage() {
             <form id="feedbackForm" method="POST" action="">
                 <div class="form-card">
                     <h1 class="form-title">Login</h1>
+
+                    ${error}
     
                     <div class="form-group">
                         <input type="text" name="emlEmail">
