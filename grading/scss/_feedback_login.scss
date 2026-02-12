@@ -1,4 +1,19 @@
 body#feedback-login {
+
+    &.has-error {
+        
+        #content {
+
+            .logo-container {
+
+                .mvfc-logo {
+                    max-width: 160px;
+                }
+
+            }
+        }
+    }
+
     #content {
         .logo-container {
             padding-top: 32px;

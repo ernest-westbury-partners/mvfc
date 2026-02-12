@@ -624,6 +624,7 @@ function modifyFeedbackLoginPage() {
 
     _ifElementContainsText('#content h3', 'Error: No teams found connected to this email', () => {
         error = `<h3 class="form-error">Error: No teams found connected to this email</h3>`
+        $('body').addClass('has-error')
     })
 
     function prependFeedbackLoginForm() {
