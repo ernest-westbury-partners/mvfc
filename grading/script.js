@@ -48,11 +48,23 @@ function isFeedbackFormPage() {
 }
 
 function isMasterCoordinatorPage() {
-    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/' || window.location.toString() == 'https://football.mvp.international/masterCoordinator'
+    return [
+        'https://football.mvp.international/masterCoordinator/',
+        'https://football.mvp.international/masterCoordinator',
+        'https://football2.mvp.international/masterCoordinator/',
+        'https://football2.mvp.international/masterCoordinator',
+    ].includes(window.location.toString())
+
 }
 
 function isMasterCoordinatorCheckinPage() {
-    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn' || window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn/'
+
+    return [
+        'https://football.mvp.international/masterCoordinator/checkIn',
+        'https://football.mvp.international/masterCoordinator/checkIn/',
+        'https://football2.mvp.international/masterCoordinator/checkIn',
+        'https://football2.mvp.international/masterCoordinator/checkIn/',
+    ].includes(window.location.toString())
 }
 
 function tableElementExists() {
