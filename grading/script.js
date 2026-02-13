@@ -177,6 +177,12 @@ function initMutationObserver() {
 
                     // }
 
+                } else if (isMasterCoordinatorPage()) {
+
+                    _ifElementExists('form#registerGrader', () => {
+                        prependAgeGroupForm(true)
+                    })
+
                 }
             }
 
@@ -185,13 +191,6 @@ function initMutationObserver() {
                 $('grammarly-extension').remove()
             }
 
-            if (isMasterCoordinatorPage()) {
-
-                _ifElementExists('form#registerGrader', () => {
-                    prependAgeGroupForm(true)
-                })
-
-            }
         }
 
     });
