@@ -76,6 +76,18 @@ html {
                             color: white !important;
                         }
                     }
+
+                    &.uncheck {
+                        background-color: red !important;
+                        color: white;
+
+                        &:hover,
+                        &:active {
+                            background-color: red !important;
+                            color: white !important;
+                        }
+
+                    }
                 }
             }
         }
