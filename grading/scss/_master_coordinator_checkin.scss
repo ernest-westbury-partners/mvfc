@@ -65,6 +65,17 @@ html {
                     margin: 24px auto;
                     padding: 6px 8px;
                     display: inline-block;
+
+                    &.reAssign {
+                        background-color: green !important;
+                        color: white;
+
+                        &:hover,
+                        &:active {
+                            background-color: green !important;
+                            color: white !important;
+                        }
+                    }
                 }
             }
         }
