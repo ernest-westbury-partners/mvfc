@@ -48,12 +48,11 @@ function isFeedbackFormPage() {
 }
 
 function isMasterCoordinatorPage() {
-    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/'
+    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/' || window.location.toString() == 'https://football.mvp.international/masterCoordinator'
 }
 
-
 function isMasterCoordinatorCheckinPage() {
-    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn'
+    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn' || window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn/'
 }
 
 function tableElementExists() {
@@ -183,6 +182,12 @@ function initMutationObserver() {
                         prependAgeGroupForm(true)
                     })
 
+                } else if (isMasterCoordinatorCheckinPage()) {
+                    if (tableElementExists()) {
+                        $('#content').addClass('table-container')
+                    } else {
+                        $('#content').removeClass('table-container')
+                    }
                 }
             }
 
@@ -390,7 +395,8 @@ function prependRegistrationForm() {
 
 function prependAgeGroupForm(isMasterCoordinator = false) {
 
-    var link = isMasterCoordinator ? '/masterCoordinator' : '/coordinator'
+    var link = isMasterCoordinator ? '/masterCoordinator' : '/coordinator';
+    var title = isMasterCoordinator ? 'Master Coordinator' : 'Coordinator';
 
     $('#content').remove()
     _prependIfElementDoesNotExist('#content', `<div id="content" class="select-age-group">
@@ -408,7 +414,7 @@ function prependAgeGroupForm(isMasterCoordinator = false) {
     <div class="right">
         <form id="registerGrader" method="POST" action="">
             <div class="form-card">
-                <h1 class="form-title">Welcome Coordinator</h1>
+                <h1 class="form-title">Welcome ${title}</h1>
 
                 <div class="form-group">
                     <label for="valAgeGroup">Select Age Group</label>
@@ -739,4 +745,6 @@ function modifyMasterCoordinatorPage() {
 
 function modifyMasterCoordinatorCheckinPage() {
 
+    $('#content').addClass('table-container')
+    appendFooter();
 }

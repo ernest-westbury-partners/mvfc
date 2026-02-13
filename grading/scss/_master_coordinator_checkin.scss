@@ -1,0 +1,74 @@
+html {
+
+    body#master-coordinator-checkin {
+
+        div#content.table-container {
+
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            h1,
+            h3 {
+                display: block;
+                text-align: center;
+                margin: 32px auto;
+            }
+
+            table {
+                width: 98%;
+                max-width: 920px;
+                margin: auto;
+                background-color: rgba(42, 13, 53, 0.3);
+                padding: 16px 0;
+                border-radius: 16px;
+                border-spacing: 0 0;
+                overflow: hidden;
+
+
+                tr:first-child {
+                    font-weight: bold;
+                    // font-size: 1.25rem;
+                }
+
+                tr {
+
+                    th,
+                    td {
+                        padding: 8px 4px;
+                        text-align: center;
+                    }
+
+                    &:nth-child(2n) {
+                        background-color: rgba(0, 0, 0, 0.3);
+                    }
+
+                    &.playerLine {
+
+                        td:nth-child(3) {
+                            width: 50%;
+                        }
+                    }
+
+                    td[colspan="3"] {
+                        display: none;
+                    }
+                }
+
+                .number {
+                    font-size: unset;
+                }
+
+                .btn {
+                    margin: 24px auto;
+                    padding: 6px 8px;
+                    display: inline-block;
+                }
+            }
+        }
+
+    }
+
+}
