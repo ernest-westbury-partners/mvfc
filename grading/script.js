@@ -47,6 +47,15 @@ function isFeedbackFormPage() {
     return window.location.toString().includes('feedback.mvp.international/feedback/feedback?team_id') || _urlIncludes('feedback_form')
 }
 
+function isMasterCoordinatorPage() {
+    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/'
+}
+
+
+function isMasterCoordinatorCheckinPage() {
+    return window.location.toString() == 'https://football.mvp.international/masterCoordinator/checkIn'
+}
+
 function tableElementExists() {
     return _elementExists('table') || _elementExists('td') || _elementExists('tr');
 }
@@ -144,7 +153,7 @@ function initMutationObserver() {
 
                         // Handle age group form
                         _ifElementExists('form#registerGrader', () => {
-                            prependAgeGroupForm()
+                            prependAgeGroupForm(false)
                         })
 
                         $('#content').removeClass('table-container')
@@ -176,6 +185,13 @@ function initMutationObserver() {
                 $('grammarly-extension').remove()
             }
 
+            if (isMasterCoordinatorPage()) {
+
+                _ifElementExists('form#registerGrader', () => {
+                    prependAgeGroupForm(true)
+                })
+
+            }
         }
 
     });
@@ -233,7 +249,13 @@ function initBodyClasses() {
         modifyFeedbackFormPage();
     } else if (isFeedbackListPage()) {
         addBodyId('feedback-list');
-        modifyFeedbackListPage()
+        modifyFeedbackListPage();
+    } else if (isMasterCoordinatorPage()) {
+        addBodyId('master-coordinator');
+        modifyMasterCoordinatorPage();
+    } else if (isMasterCoordinatorCheckinPage()) {
+        addBodyId('master-coordinator-checkin');
+        modifyMasterCoordinatorCheckinPage();
     }
 }
 
@@ -367,13 +389,15 @@ function prependRegistrationForm() {
 `)
 }
 
-function prependAgeGroupForm() {
+function prependAgeGroupForm(isMasterCoordinator = false) {
+
+    var link = isMasterCoordinator ? '/masterCoordinator' : '/coordinator'
 
     $('#content').remove()
     _prependIfElementDoesNotExist('#content', `<div id="content" class="select-age-group">
     <div class="left">
         <div class="logo-container">
-            <a href="/coordinator">
+            <a href="${link}">
                 <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
             </a>
 
@@ -685,4 +709,35 @@ function modifyFeedbackListPage() {
     })
 
     prependMvfcLogo()
+}
+
+function modifyMasterCoordinatorPage() {
+
+    $('#content').remove()
+    $('body>a').remove()
+
+    $('body').prepend(`
+        <div id="content">
+
+            <div class="logo-container">
+                <a href="/masterCoordinator">
+                    <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                </a>
+                <h3>
+                    Welcome Master Coordinator
+                </h3>
+            </div>
+
+            <div class="actions">
+                <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
+            </div>
+
+        </div>
+    `)
+
+    appendFooter();
+}
+
+function modifyMasterCoordinatorCheckinPage() {
+
 }
