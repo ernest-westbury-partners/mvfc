@@ -198,6 +198,12 @@ function initMutationObserver() {
                     if (tableElementExists()) {
                         $('#content').addClass('table-container')
                     } else {
+
+                        // Handle age group form
+                        _ifElementExists('form#registerGrader', () => {
+                            prependAgeGroupForm(true)
+                        })
+
                         $('#content').removeClass('table-container')
                     }
                 }
@@ -270,7 +276,11 @@ function initBodyClasses() {
         addBodyId('master-coordinator');
         modifyMasterCoordinatorPage();
     } else if (isMasterCoordinatorCheckinPage()) {
-        addBodyId('master-coordinator-checkin');
+        if (tableElementExists()) {
+            addBodyId('master-coordinator-checkin');
+        } else {
+            addBodyId('master-coordinator');
+        }
         modifyMasterCoordinatorCheckinPage();
     }
 }
@@ -757,6 +767,34 @@ function modifyMasterCoordinatorPage() {
 
 function modifyMasterCoordinatorCheckinPage() {
 
-    $('#content').addClass('table-container')
+    if (tableElementExists()) {
+        $('#content').addClass('table-container')
+    } else {
+
+        $('#content').remove()
+        $('body>a').remove()
+
+        $('body').prepend(`
+            <div id="content">
+    
+                <div class="logo-container">
+                    <a href="/masterCoordinator">
+                        <img width="150px" class="center mvfc-logo" src="https://westbury-partners-mvfc-grading.s3.ap-southeast-1.amazonaws.com/img/MVFC-Logo-White.svg" alt="Manly Vale FC">
+                    </a>
+                    <h3>
+                        Welcome Master Coordinator
+                    </h3>
+                </div>
+    
+                <div class="actions">
+                    <a class="btn custom-btn" href="/register" target="_blank">Register</a>
+                    <a class="btn custom-btn" href="/coordinator/logout" target="_blank">Logout</a>
+                    <a onclick="getNewGradingGroup()" class="btn custom-btn">New Group</a>
+                </div>
+    
+            </div>
+        `)
+    }
+
     appendFooter();
 }
